@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Aid Portal</title>
+    <link rel="stylesheet" href="../static/css/style_accident.css">
+</head>
+<body>
+
+    <!-- Navbar with logo and name aligned to the left -->
+    <nav class="navbar">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_mfOIU-_BUzPZM-Oa8D5VByVGBzG_GIp2FA&s" alt="Logo" />
+        <h1>Emergency Aid Portal</h1>
+    </nav>
+
+    <!-- Main container for form and sidebar -->
+    <div class="main-container">
+        <!-- Sidebar with links -->
+        <div class="sidebar">
+            <a href="{{ url_for('general.home') }}">Home</a>
+            <a href="{{ url_for('blood.donate_blood') }}">Blood Donation</a>
+            <a href="{{ url_for('organ.donate_organ') }}">Organ Donation</a>
+
+            <a href="tel:+6363645099">Quick Dial</a>
+        </div>
+
+        <!-- Accident form container -->
+        <div class="accident-form-container">
+            <form class="accident-form" action="{{ url_for('accident_zone.report_accident') }}" method="POST" enctype="multipart/form-data">
+                <h2>Report Accident</h2>
+                <div class="mb-3">
+                    <label for="accident-location" class="form-label">Accident Location</label>
+                    <input type="text" class="form-control" id="accident-location" name="accident_location" placeholder="Enter location" required>
+                </div>
+                <div class="mb-3">
+                    <label for="accident-description" class="form-label">Description</label>
+                    <textarea class="form-control" id="accident-description" name="accident_description" rows="4" placeholder="Provide description" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="accident-image" class="form-label">Accident Image</label>
+                    <input type="file" class="form-control" id="accident-image" name="accident_image" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

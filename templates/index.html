@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Aid Portal</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">       
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://w7.pngwing.com/pngs/767/1002/png-transparent-blue-and-white-medicine-logo-screenshot-star-of-life-emergency-medical-services-emergency-medical-technician-star-of-life-icon-free-s-miscellaneous-blue-emblem-thumbnail.png"
+                 alt="Logo" width="40" class="d-inline-block align-middle" />
+            Emergency Aid Portal
+        </a>
+        <div class="navbar-nav nav-links">
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#about-us">About Us</a>
+            <a class="nav-link" href="{{ url_for('admin.login') }}">Admin Login</a>
+            <div class="search-container">
+                <a class="nav-link" href="#" onclick="toggleSearch()">Search</a>
+                <div class="search-bar" id="searchBar">
+                    <input type="text" id="searchInput" placeholder="Type here..." onkeydown="searchSection(event)" />
+                </div>
+            </div>
+        </div>        
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="container">
+        <h1>Welcome to Emergency Aid Portal</h1>
+        <p>Your trusted partner for professional solutions in emergencies.</p>
+    </div>
+</div>
+
+<div class="thought-section">
+    <div class="left">
+        <h2>“The best way to find yourself is to lose yourself in the service of others.”</h2>
+    </div>
+    <div class="right"></div>
+</div>
+
+<div class="categories">
+    <div class="category-box" id="accident-registry">
+        <img src="https://www.work-wallet.com/wp-content/uploads/2022/01/incident-and-accident-reporting-hex-landscape-1024x535.jpg" alt="Accident Registry">
+        <h3>Accident Registry</h3>
+        <p>Report accidents and receive immediate assistance.</p>
+        <a href="{{ url_for('accident_zone.report_accident') }}" class="btn btn-dark">Report</a>
+    </div>
+    <div class="category-box" id="blood-donation">
+        <img src="https://media.istockphoto.com/id/1479300982/vector/blood-drop-wireframe-glowing-low-poly-design-on-dark-blue-background-abstract-futuristic.jpg?s=612x612&w=0&k=20&c=2LiPvmeqTkAoeT7YTBbMvx4FjmXnABKtRu7OjsRQyj0=" alt="Blood Donation">
+        <h3>Blood Donation</h3>
+        <p>Save lives by donating blood today.</p>
+        <a href="{{ url_for('blood.donate_blood') }}" class="btn btn-dark">Donate Now</a>
+    </div>
+    <div class="category-box" id="organ-donation">
+        <img src="https://batonrougeclinic.com/wp-content/uploads/2023/04/Donor-scaled.jpg" alt="Organ Donation">
+        <h3>Organ Donation</h3>
+        <p>Make a difference by donating your organs.</p>
+        <a href="{{ url_for('organ.donate_organ') }}" class="btn btn-dark">Donate Organs</a>
+    </div>
+</div>
+
+<!-- Dashboard Section -->
+<div class="dashboard-container">
+    <h2>Dashboard Overview</h2>
+
+    <!-- Graphs Section (Side by Side) -->
+    <div class="chart-container">
+        <div class="chart-box">
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Display Counts -->
+                <div class="counts">
+                <div class="count-box">
+                    <h3>Blood Donations</h3>
+                    <p id="bloodCount">0</p>
+                </div>
+                <div class="count-box">
+                    <h3>Organ Donations</h3>
+                    <p id="organCount">0</p>
+                </div>
+                <div class="count-box">
+                    <h3>Accidents</h3>
+                    <p id="accidentCount">0</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('admin.login') }}" class="btn btn-outline-primary">
+                    <i class="fa fa-cog"></i> Admin Panel
+                </a>
+            </div>
+</div>
+
+
+
+<!-- About Us Section -->
+<div id="about-us" class="about-us">
+    <h2>About Us</h2>
+    <ul>
+        <li>We are committed to providing immediate support during emergencies.</li>
+        <li>Our goal is to bridge the gap between those in need and those willing to help.</li>
+        <li>Ensure fast accident reporting for immediate assistance.</li>
+        <li>Encourage blood donation to help those in urgent need.</li>
+        <li>Promote organ donation awareness to save more lives.</li>
+    </ul>
+    <div class="contact-icons-box">
+        <div class="contact-icons">
+            <a href="tel:6363645099"><i class="fa fa-phone"></i></a>
+            <a href="mailto:keerti.s.g2020@gmail.com"><i class="fa fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/keertig"><i class="fa fa-linkedin"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../static/js/dashboard.js"></script>
+<script src="../static/js/script.js"></script>
+
+</body>

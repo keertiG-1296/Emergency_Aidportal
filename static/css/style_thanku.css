@@ -1,0 +1,56 @@
+/* Full-page background */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5; /* Simple light gray background */
+    margin: 0;
+}
+
+/* Centered container */
+.container {
+    background: white; /* Plain white background */
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Simple border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* Thank You text */
+.thank-you {
+    font-size: 32px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Message text */
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Simple button */
+.btn {
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}

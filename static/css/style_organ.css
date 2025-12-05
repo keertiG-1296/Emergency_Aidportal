@@ -1,0 +1,105 @@
+body {
+    background: linear-gradient(to right, #BFEFFF, #BFEFFF); /* Light Sky Blue */
+    scroll-behavior: smooth;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh
+}
+.box {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    min-height: 600px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.box:hover {
+    transform: translateY(-3px);
+}
+
+.form-container {
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.7); /* Slight transparency */
+    padding: 20px;
+}
+
+.separator {
+    margin: 25px 0;
+    border-top: 2px solid #ddd;
+}
+
+.donation-box img {
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.1); /* Transparent black */
+    color: black;
+    backdrop-filter: blur(5px); /* Adds slight blur */
+}
+
+.navbar img {
+    width: 50px;
+    margin-right: 15px;
+}
+
+/* Sidebar */
+.nav-box {
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-box:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light transparent hover effect */
+    color: black;
+}
+
+.nav-box a {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Light transparency */
+    border: 1px solid #ccc;
+}
+
+.btn-submit {
+    background-color: rgba(0, 0, 0, 0.3); /* Transparent black */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Darker transparent hover */
+}
+
+/* Info Section */
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    padding: 5px 0;
+}

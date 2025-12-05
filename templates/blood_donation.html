@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Aid Portal - Blood Donation</title>
+    <link rel="stylesheet" href="../static/css/style_blood.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container mt-3">
+    <div class="d-flex align-items-center">
+        <img src="https://w7.pngwing.com/pngs/767/1002/png-transparent-blue-and-white-medicine-logo-screenshot-star-of-life-emergency-medical-services-emergency-medical-technician-star-of-life-icon-free-s-miscellaneous-blue-emblem-thumbnail.png" 
+             alt="Logo" width="60" class="me-3">
+        <h1 class="text-primary">Emergency Aid Portal</h1>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="box">
+                <h4>Sections</h4>
+                <div class="mb-5"></div>
+                <div class="nav-box mb-5"><a class="nav-link" href="{{ url_for('general.home') }}">Home</a></div>
+                <div class="separator"></div>
+                <div class="nav-box mb-5"><a class="nav-link" href="{{ url_for('accident_zone.report_accident') }}">Accident Registry</a></div>
+                <div class="separator"></div>
+                <div class="nav-box mb-5"><a class="nav-link" href="{{ url_for('organ.donate_organ') }}">Organ Donation</a></div>
+                <div class="separator"></div>
+                <div class="nav-box mb-5">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#bloodRequestModal">Blood Request</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Blood Request Modal -->
+        <div class="modal fade" id="bloodRequestModal" tabindex="-1" aria-labelledby="bloodRequestModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="bloodRequestModalLabel">Request Blood</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="bloodRequestForm" action="{{ url_for('blood.request_blood') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="patient_name" class="form-label">Patient Name:</label>
+                                <input type="text" id="patient_name" name="patient_name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="blood_group" class="form-label">Blood Group Needed:</label>
+                                <select id="blood_group" name="blood_group" class="form-control" required>
+                                    <option value="">Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact" class="form-label">Contact Number:</label>
+                                <input type="tel" id="contact" name="contact" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="hospital" class="form-label">Hospital/Location:</label>
+                                <input type="text" id="hospital" name="hospital" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box form-container">
+                <h2 class="text-center text-danger">Blood Donation Form</h2>
+                <p class="text-center text-secondary">Your contribution can save a life!</p>
+                <p class="text-center text-danger fw-bold">Do not donate blood if you are under any medication or have a medical history.</p>
+                
+                <form id="bloodDonationForm" action="{{ url_for('blood.donate_blood') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="blood_group" class="form-label">Blood Group:</label>
+                        <select id="blood_group" name="blood_group" class="form-control" required>
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City:</label>
+                        <input type="text" id="city" name="city" class="form-control" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="eligibility" required>
+                        <label class="form-check-label" for="eligibility">I confirm that I meet all the eligibility criteria to donate blood.</label>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="box donation-box">
+                <img src="https://www.sriramakrishnahospital.com/wp-content/uploads/2021/06/Blood-Donation-1.jpg" 
+                     alt="Blood Donation Info">
+                <h2 class="text-danger text-center">Who Can Donate Blood?</h2>
+                <ul class="list-unstyled">
+                    <li>- Age: 18-65 years</li>
+                    <li>- Weight: At least 50 kg</li>
+                    <li>- Healthy with no chronic diseases</li>
+                    <li>- No recent surgeries or infections</li>
+                    <li>- Not donated blood in the last 3 months</li>
+                    <li>- No active medications that may interfere</li>
+                    <li>- Hydrate well before donation</li>
+                    <li>- Have a balanced meal before donating</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../static/js/script.js"></script>
+</body>
+</html>
